@@ -1,0 +1,14 @@
+const handleBiometricLogin = async () => {
+  setIsAuthenticating(true);
+
+  // Simulating biometric authentication delay
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+
+  // Setting the authentication cookie
+  // Here we use document.cookie to store the session locally
+  document.cookie = "authenticated=true; path=/; max-age=3600";
+
+  setIsAuthenticating(false);
+  router.push('/dashboard');
+};
+
