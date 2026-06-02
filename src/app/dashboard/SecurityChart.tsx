@@ -1,29 +1,37 @@
-import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import Navbar from '@/components/Navbar';
+import SecurityChart from '@/components/SecurityChart';
 
-const data = [
-  { name: '00:00', threats: 2 },
-  { name: '04:00', threats: 1 },
-  { name: '08:00', threats: 5 },
-  { name: '12:00', threats: 2 },
-  { name: '16:00', threats: 8 },
-  { name: '20:00', threats: 3 },
-];
-
-export default function SecurityChart() {
+export default function DashboardPage() {
   return (
-    <div className="h-64 w-full bg-gray-900 border border-gray-800 p-4 rounded-xl">
-      <h3 className="text-gray-400 mb-4 text-sm">Threat Detection Trends</h3>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-          <XAxis dataKey="name" stroke="#9CA3AF" />
-          <YAxis stroke="#9CA3AF" />
-          <Tooltip contentStyle={{ backgroundColor: '#111827', border: 'none' }} />
-          <Line type="monotone" dataKey="threats" stroke="#22C55E" strokeWidth={2} />
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
+    <main className="min-h-screen bg-gray-950 text-white">
+      <Navbar />
+      <div className="p-4 md:p-8"> {/* ስልኩ ላይ ትንሽ፣ ኮምፒውተር ላይ ሰፊ ፓዲንግ */}
+        <h1 className="text-2xl md:text-3xl font-bold mb-6 text-green-400">
+          Security Command Center
+        </h1>
+        
+        {/* Statistics Grid - ሁለቱንም ስክሪኖች የሚመጥን */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8">
+          <div className="bg-gray-900 border border-gray-800 p-6 rounded-xl">
+            <h2 className="text-gray-400">Threat Level</h2>
+            <p className="text-2xl font-bold text-green-500">LOW</p>
+          </div>
+          
+          <div className="bg-gray-900 border border-gray-800 p-6 rounded-xl">
+            <h2 className="text-gray-400">Active Sessions</h2>
+            <p className="text-2xl font-bold text-blue-500">01</p>
+          </div>
+
+          <div className="bg-gray-900 border border-gray-800 p-6 rounded-xl">
+            <h2 className="text-gray-400">Encryption</h2>
+            <p className="text-2xl font-bold text-purple-500">AES-256</p>
+          </div>
+        </div>
+
+        {/* Security Chart */}
+        <SecurityChart />
+      </div>
+    </main>
   );
 }
 
