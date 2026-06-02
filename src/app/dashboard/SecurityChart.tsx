@@ -35,3 +35,26 @@ export default function DashboardPage() {
   );
 }
 
+'use client';
+import Navbar from '@/components/Navbar';
+import SecurityChart from '@/components/SecurityChart';
+import LogoutButton from './LogoutButton';
+
+export default function DashboardPage() {
+  return (
+    <main className="min-h-screen bg-gray-950 text-white">
+      {/* Header section with Navbar and Logout */}
+      <header className="flex justify-between items-center p-4 border-b border-gray-800">
+        <Navbar />
+        <LogoutButton />
+      </header>
+      
+      <div className="p-8">
+        <h1 className="text-2xl md:text-3xl font-bold mb-6 text-green-400">
+          Security Command Center
+        </h1>
+        <SecurityChart />
+      </div>
+    </main>
+  );
+}
